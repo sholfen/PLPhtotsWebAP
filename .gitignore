@@ -398,3 +398,4 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+/PLPhtotsWebAP/Properties/ServiceDependencies/PLPhtotsWebAP - Zip Deploy/profile.arm.json

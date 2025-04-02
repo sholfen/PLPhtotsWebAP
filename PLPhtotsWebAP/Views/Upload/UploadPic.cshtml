@@ -1,0 +1,14 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "上傳";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="upload">
+    <form action="/Upload/UploadPics" enctype="multipart/form-data" method="post">
+        <input type="submit" class="btn btn-primary" value="上傳圖片" />
+        <input type="file" id="files" multiple name="files" />
+    </form>
+</div>

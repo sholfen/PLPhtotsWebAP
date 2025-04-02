@@ -1,0 +1,23 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "列出所有圖片";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var pictureDatas = ViewData["PictureDatas"] as List<PictureData>;
+}
+
+<h3>列出所有圖片</h3>
+<div class="container-md">
+    <div class="row row-cols-5">
+        @foreach (var data in pictureDatas)
+        {
+            <div class="col">
+                <a href="/ImagePage/@data.RowKey" target="_blank">
+                    <img src="@data.ThumbUrl" alt=""
+                         style="padding: 15px 0;width: 15rem;max-width: 100%;height: auto;vertical-align: middle;border-style: none;" />
+                </a>
+            </div>
+        }
+    </div>
+</div>
