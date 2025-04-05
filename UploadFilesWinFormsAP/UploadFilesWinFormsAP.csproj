@@ -9,6 +9,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Azure.Core" Version="1.45.0" />
+    <PackageReference Include="Azure.Storage.Blobs" Version="12.24.0" />
+    <PackageReference Include="Azure.Storage.Common" Version="12.23.0" />
+    <PackageReference Include="Magick.NET-Q16-HDRI-AnyCPU" Version="14.6.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\UploadLib\UploadLib.csproj" />
   </ItemGroup>
 
