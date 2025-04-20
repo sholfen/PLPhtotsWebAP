@@ -13,8 +13,10 @@ builder.Services.AddAuthentication("Cookies").AddCookie();
 builder.Services.AddHttpContextAccessor();
 
 builder.Services.AddScoped<IUserAppService, UserAppService>();
+builder.Services.AddScoped<ILogAppService, LogAppService>();
 builder.Services.AddScoped<IPictureAppService, PictureAppService>();
 builder.Services.AddScoped<IPictureRepository, PictureRepository>();
+builder.Services.AddScoped<ILogRepository, LogRepository>();
 
 builder.Services.Configure<FormOptions>(options =>
 {
@@ -41,6 +43,7 @@ PictureRepository.BlobConnectionString = config.GetConnectionString("AzureBlobCo
 PictureRepository.TableConnectionString = config.GetConnectionString("AzureTable");
 PictureRepository.CDNDomain = config.GetValue<string>("PicDomain");
 AlbumRepository.TableConnectionString = config.GetConnectionString("AzureTable");
+LogRepository.TableConnectionString = config.GetConnectionString("AzureTable");
 UserData.UserName = config.GetSection("AdminUser").GetValue<string>("User");
 UserData.UserPassword = config.GetSection("AdminUser").GetValue<string>("Password");
 

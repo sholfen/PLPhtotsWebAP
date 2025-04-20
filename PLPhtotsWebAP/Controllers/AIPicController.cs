@@ -2,11 +2,11 @@
 
 namespace PLPhtotsWebAP.Controllers
 {
-    public class LabsController : Controller
+    public class AIPicController : Controller
     {
         public IActionResult Index()
         {
-            return View("Labs");
+            return View();
         }
     }
 }

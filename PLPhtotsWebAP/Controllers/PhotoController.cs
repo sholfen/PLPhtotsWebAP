@@ -13,11 +13,37 @@ namespace PLPhtotsWebAP.Controllers
             _pictureAppService = pictureAppService;
         }
 
-        [HttpGet]
+        [HttpGet()]
         public async Task<IActionResult> List()
         {
-            var list = await _pictureAppService.GetAllPicData();
+            var list = await _pictureAppService.GetPictureDataByPaging(0, 20);
             ViewData["PictureDatas"] = list;
+            ViewData["PageIndex"] = 0;
+            return View();
+        }
+
+        [HttpGet("/Photo/List/{pageIndex}")]
+        public async Task<IActionResult> List(int? pageIndex)
+        {
+            List<PictureData> list = new List<PictureData>();
+            if (pageIndex == null)
+            {
+                pageIndex = 0;
+                list = await _pictureAppService.GetPictureDataByPaging(0, 20);
+                ViewData["PictureDatas"] = list;
+                ViewData["PageIndex"] = pageIndex;
+            }
+            else
+            {
+                if (pageIndex.Value < 0)
+                {
+                    pageIndex = 0;
+                }
+                list = await _pictureAppService.GetPictureDataByPaging(pageIndex.Value, 20);
+                ViewData["PictureDatas"] = list;
+                ViewData["PageIndex"] = pageIndex.Value;
+            }
+
 
             return View();
         }

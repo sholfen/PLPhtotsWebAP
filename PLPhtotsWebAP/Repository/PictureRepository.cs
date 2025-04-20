@@ -100,12 +100,12 @@ namespace PLPhtotsWebAP.Repository
             return data.ImageUrl;
         }
 
-        public async Task<List<PictureData>> GetPictureDataByPaging(int pageIndex,int pageSize)
+        public async Task<List<PictureData>> GetPictureDataByPaging(int pageIndex, int pageSize)
         {
             List<PictureData> list = _cosmosClient.Query<PictureData>(p => p.PartitionKey == PartitionKey)
-                .ToList();
-            list = list.OrderByDescending(p => p.Timestamp)
-                .Skip((pageIndex - 1) * pageSize)
+                .Where(p => !string.IsNullOrEmpty(p.ThumbUrl))
+                .OrderByDescending(p => p.Timestamp)
+                .Skip(pageIndex * pageSize)
                 .Take(pageSize)
                 .ToList();
             return list;

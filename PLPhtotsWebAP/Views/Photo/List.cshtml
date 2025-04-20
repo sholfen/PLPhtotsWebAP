@@ -5,6 +5,7 @@
     ViewData["Title"] = "列出所有圖片";
     Layout = "~/Views/Shared/_Layout.cshtml";
     var pictureDatas = ViewData["PictureDatas"] as List<PictureData>;
+    int pageIndex = int.Parse(ViewData["PageIndex"].ToString());
 }
 
 <h3>列出所有圖片</h3>
@@ -20,4 +21,8 @@
             </div>
         }
     </div>
+</div>
+<div class="footer">
+    <a class="btn btn-primary" href="/Photo/List/@(pageIndex-1)" role="button">上一頁</a>
+    <a class="btn btn-primary" href="/Photo/List/@(pageIndex+1)" role="button">下一頁</a>
 </div>
